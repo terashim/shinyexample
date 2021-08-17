@@ -1,0 +1,21 @@
+Package: shinyexample
+Title: An Amazing Shiny App
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "firstname",
+           family = "lastname",
+           role = c("aut", "cre"),
+           email = "your@email.com")
+Description: What the package does (one paragraph).
+License: What license is it under?
+Imports: 
+    config (>= 0.3.1),
+    golem (>= 0.2.1),
+    palmerpenguins (>= 0.1.0),
+    shiny (>= 1.6.0)
+Config/renv/profiles/dev/dependencies:
+    devtools (>= 2.4.2),
+    renv (>= 0.14.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

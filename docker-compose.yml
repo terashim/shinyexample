@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  rstudio:
+    image: shinyexample-rstudio:dev
+    build:
+      context: dev/docker
+    ports:
+      - "8787:8787"
+    environment:
+      - PASSWORD=password
+      - DISABLE_AUTH=true
+      - RENV_PATHS_CACHE=/home/rstudio/.local/share/renv/cache
+    volumes:
+      - .:/home/rstudio/shinyexample
+      - ${RENV_PATHS_CACHE_HOST:-./dev/renv/cache}:/home/rstudio/.local/share/renv/cache
+      - ${DOTFILES_ROOT:-./dev/dotfiles}:/home/rstudio/dotfiles
+      - ${GITHUB_SSH_IDENTITY:-/dev/null}:/home/rstudio/.ssh/id_github:ro
+  shiny:
+    image: shinyexample-shiny:dev
+    build:
+      context: .
+    ports:
+      - "8080:80"
